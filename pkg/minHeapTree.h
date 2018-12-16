@@ -54,6 +54,6 @@ void minHeapTree< T >::bubbleDw( int index ) {
 }
 
 template < class T >
-const T minHeapTree< T >::min() const { return this->get(0); }
+const T minHeapTree< T >::min() const { return this->get(1); }
 
 #endif

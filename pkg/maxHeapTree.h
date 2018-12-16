@@ -54,6 +54,6 @@ void maxHeapTree< T >::bubbleDw( int index ) {
 }
 
 template < class T >
-const T maxHeapTree< T >::max() const { return this->get(0); }
+const T maxHeapTree< T >::max() const { return this->get(1); }
 
 #endif
