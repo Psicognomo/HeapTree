@@ -15,15 +15,8 @@ class heapTree {
   int size() const;
   void add(T);
 
-  void print() const {
-    std::cout<<"[ ";
-    for (unsigned int i=0; i<m_elements.size(); i++)
-      std::cout<<m_elements.at(i) <<" ";
-    std::cout<<"]";
-    std::cout<<std::endl;
-  }
-
   virtual T pop();
+  void print() const;
 
  protected:
   virtual void bubbleUp(int) = 0;
@@ -44,6 +37,8 @@ class heapTree {
 
   inline void increaseSize();
   inline void decreaseSize();
+
+  void swap(const int,const int);
 
  protected:
   int m_size;
@@ -120,8 +115,24 @@ T heapTree< T >::pop() {
   m_elements.at(0) = m_elements.at( m_size - 1 );
   m_elements.pop_back();
   this->decreaseSize();
-  bubbleDw( 1 );
+  this->bubbleDw( 1 );
   return output;
+}
+
+template < class T >
+void heapTree< T >::print() const {
+  std::cout<<"[ ";
+  for (unsigned int i=0; i<m_elements.size(); i++)
+    std::cout<<m_elements.at(i) <<" ";
+  std::cout<<"]";
+  std::cout<<std::endl;
+}
+
+template < class T >
+void heapTree< T >::swap( const int indexA,const int indexB ) {
+  T tmpValue = m_elements.at( indexA - 1 );
+  m_elements.at( indexA - 1 ) = m_elements.at( indexB - 1 );
+  m_elements.at( indexB - 1 ) = tmpValue;
 }
 
 #endif

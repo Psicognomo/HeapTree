@@ -34,9 +34,7 @@ void maxHeapTree< T >::bubbleUp( int index ) {
   if ( this->get(index) < this->getParent( index ) ) return;
 
   const int indexParent = this->getParentIndex( index );
-  T tmpElement = this->get( index );
-  heapTree< T >::m_elements.at( index - 1 ) = this->getParent( index );
-  heapTree< T >::m_elements.at( indexParent - 1 ) = tmpElement;
+  this->swap( index,indexParent );
   this->bubbleUp( indexParent );
 }
 
@@ -51,9 +49,7 @@ void maxHeapTree< T >::bubbleDw( int index ) {
 
   if ( this->get(index) > this->get(indexChild) ) return;
 
-  T tmpElement = this->get( index );
-  heapTree< T >::m_elements.at( index - 1 ) = this->get( indexChild );
-  heapTree< T >::m_elements.at( indexChild - 1 ) = tmpElement;
+  this->swap( index,indexChild );
   this->bubbleDw( indexChild );
 }
 
